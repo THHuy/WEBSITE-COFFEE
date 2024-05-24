@@ -1,0 +1,476 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all .2s linear;
+    scrollbar-width: none;
+}
+html{
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+
+#header {
+    height: 62px;
+    background: linear-gradient(90deg, rgba(140,85,13,1) 20%, rgba(244,140,2,1) 62%, rgba(209,145,61,1) 74%, rgba(221,168,98,1) 100%, rgba(254,229,199,1) 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* thanh header không bị ảnh làm chìm mất */
+    z-index: 1;
+    box-shadow: 0 .5rem 1rem rgba(140,85,13,1);
+    
+}
+#nav, .subnav{
+    padding: 0;
+    list-style-type: none; /*bỏ dấu chấm của list */
+
+}
+#nav{
+    display:inline-block;
+}
+
+/* làm cho list ngang hàng */
+
+/* set subnav nằm dưới thẻ li(mở rộng của thẻ more)
+cho position của li relative và của subnav absolute */
+#nav > li{
+    display: inline-block;
+}
+#nav li{
+    
+    position: relative;
+    
+}
+
+
+#nav > li > a {
+    color: #fff;
+    text-transform: uppercase; /* viết hoa thẻ a cấp 1,ko ảnh hưởng cấp 2 */
+}
+#nav li a{
+   
+    text-decoration: none;
+    line-height: 62px; /*phần tử trong list có height bằng với height của header */
+    padding:0 24px; /*cho các phần tử cách nhau ra left-right:24px */
+    display:block;
+   
+
+}
+#nav li:hover .subnav {
+    display: block;
+}
+/* di chuột vào đổi màu */
+
+#nav > li:hover > a,
+#nav .subnav li:hover a{
+    color: #000;
+    background-color: #ccc;
+
+}
+
+
+#nav .subnav {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    /* tạo bóng đổ */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    min-width: 160px;
+    
+}
+
+#nav .subnav a {
+    color: #000;
+    padding:0 12px;
+    line-height: 38px;
+}
+
+#nav .nav-arrow-down {
+    font-size: 12px;
+}
+#header .signout-btn {
+    float: right;
+    padding : 0 21px;
+    cursor: pointer;
+}
+
+#header .signout-btn:hover {
+    background-color: #f44336;
+}
+#header .signout-icon {
+    color: #fff;
+    font-size: 20px;
+    line-height: 62px;
+}
+
+/* text quản lý */
+.header-text {
+    margin-top: 90px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(90deg, rgba(140,85,13,1) 20%, rgba(244,140,2,1) 62%, rgba(209,145,61,1) 74%, rgba(221,168,98,1) 100%, rgba(254,229,199,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 80px;
+}
+.header-text p {
+    font-size:40px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"] {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+.actions {
+    text-align: center;
+}
+
+.add-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* modal thêm nv */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn ease 0.6s;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#addEmployeeForm {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#addEmployeeForm label {
+    text-align: left;
+}
+
+#addEmployeeForm input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#addEmployeeForm button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* edit modal */
+.edit-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.edit-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn ease 0.6s;
+}
+
+.edit-modal .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.edit-modal #editEmployeeForm {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.edit-modal #editEmployeeForm label {
+    text-align: left;
+}
+
+.edit-modal #editEmployeeForm input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-modal #editEmployeeForm button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* modal xoá */
+.delete-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn ease 0.6s;
+}
+
+.delete-modal button:hover {
+    background-color: #c9302c;
+}
+
+.delete-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease-in-out;
+}
+
+.delete-modal .close:hover {
+    color: #333;
+}
+
+.delete-modal h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.delete-modal p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.delete-modal button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Cho thẻ select trong modal thêm nhân viên */
+#myModal select {
+    width: calc(100% - 50px); /* Chiều rộng tối đa với padding */
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Cho thẻ select trong modal sửa nhân viên */
+#editModal select {
+    width: calc(100% - 50px); /* Chiều rộng tối đa với padding */
+    padding:8px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+/* logout modal */
+.logout-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn ease 0.6s;
+}
+
+.logout-modal .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+
+.logout-modal h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.logout-modal p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.logout-modal button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.logout-modal button:hover {
+    background-color: #c9302c;
+}
+
+.logout-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease-in-out;
+}
+
+.logout-modal .close:hover {
+    color: #333;
+}
+
+@keyframes modalFadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(-140px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

@@ -1,0 +1,261 @@
+ <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head> 
+
+<header class="header " >
+    
+        <nav id="navbar-nav" class="navbar navbar-expand-lg navbar-dark ">
+    <a href="#" class="logo" id="outside"><img src="/assets_Home/images/logo.png" alt="" width="120px"> <i class="fas fa-mug-hot"></i></a>
+    <button id="navbar-dropdown" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+     <a href="#" class="logo"><img src="/assets_Home/images/logo.png" alt="" width="120px"> <i class="fas fa-mug-hot"></i></a>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a  href="/">TRANG CHỦ <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+           <a href="#about">VỀ CHÚNG TÔI</a>
+        </li>
+        <li class="nav-item">
+          <a href="#menu">THỰC ĐƠN</a>
+        </li>
+        <li class="nav-item">
+          <a href="https://forms.gle/UB9oWQi4AMi5tdiK8">ĐÁNH GIÁ</a>
+        </li>
+         <li class="nav-item">
+           <a href="/dat-hang">ĐẶT HÀNG TRỰC TUYẾN</a>
+        </li>
+         <li class="nav-item">
+          <a href="/dat-ban">ĐẶT BÀN</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+        <a href="#" class="btn" onclick="openModal()">ĐĂNG NHẬP</a>
+            <link rel="icon" type="image/x-icon" href="/assets_Home/images/1.jpg">
+            <title>M-Coffee</title>
+            <link rel="stylesheet" href="/assets_Home/css/style.css">
+            <link rel="stylesheet" href="/assets_Home/css/style.css">
+            <link rel="stylesheet" href="/assets_Home/css/login.css">
+</header>
+<!-- HOME -->
+
+<section class="home" id="home">
+        <div class="row">
+            
+            <div class="image">
+                <img src="/assets_Home/images/homebg.png" class="main-home-image" alt="" height="750px">
+            
+            </div>
+        </div>
+        <div class="image-slider">
+            <img src="/assets_Home/images/home-img-2.png" alt="">
+            <img src="/assets_Home/images/home-img-3.png" alt="">
+            <img src="/assets_Home/images/home-img-1.png" alt="">
+        </div>
+    </section>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>ĐĂNG NHẬP</h2>
+              <form id="loginForm" method="post" id="myModal" action="/login">
+                <label for="username">Tài khoản:</label>
+                <input type="text" name="username" placeholder="Username">
+                <label for="password">Mật khẩu:</label>
+                  <input type="password" name="pwd" placeholder="Password">
+                <button type="submit">ĐĂNG NHẬP</button>
+              </form>
+            </div>
+          </div>
+<!-- Modal -->
+    
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <h1 class="heading">VỀ CHÚNG TÔI</h1>
+        <!-- <span>why choose us</span> -->
+        <div class="row">
+            <div class="image">
+                <img src="image/about-img.png" alt="">
+            </div>
+
+            <div class="content">
+                <h3 class="title"></h3>
+                <p>Hành trình để tạo nên một thương hiệu cà phê không chỉ là một chuyến đi kinh doanh mà còn là một cuộc phiêu lưu tìm kiếm văn hóa, hương vị và trải nghiệm. Mỗi thương hiệu coffee đều có câu chuyện riêng, lấy cảm hứng từ nhiều nguồn khác nhau, từ những người nông dân trồng cà phê ở những vùng đất xa xôi, cho đến những nhà rang xay tài năng, và những người đam mê cà phê trên khắp thế giới. </p>
+                <p>Sau đó, hành trình di chuyển đến các nhà rang xay. Đây là nơi những hạt cà phê được biến đổi từ trạng thái chưa chín thành những hạt cà phê có màu sắc, mùi hương và hương vị độc đáo. Quy trình rang xay cà phê không chỉ là một công việc, mà còn là nghệ thuật, một sự kết hợp giữa kỹ thuật và tinh thần nghệ sĩ.</p>
+                <p>Nhưng đỉnh cao của hành trình là khi cà phê này đến tay người yêu cà phê, khi một thương hiệu coffee thành công khiến người tiêu dùng không chỉ thưởng thức một ly cà phê ngon mà còn cảm nhận được câu chuyện, văn hóa và giá trị mà thương hiệu đó mang lại. Đó có thể là một cốc cà phê sáng tạo trong một quán cà phê độc đáo, hoặc một gói cà phê được gửi từ những vùng đất xa xôi, mang theo hơi thở của núi rừng và hương vị đặc trưng của vùng đất đó.</p>
+                <p>Mỗi thương hiệu coffee đều có câu chuyện của riêng mình, và hành trình để tạo nên một thương hiệu cà phê không chỉ là về việc kinh doanh, mà còn là về việc kể lại những câu chuyện, chia sẻ những giá trị và tạo ra những trải nghiệm đáng nhớ cho mọi người.</p>
+                <p>Hành trình này thường bắt đầu từ những hạt cà phê chất lượng, được trồng trên những khu vực đất đai độc đáo, với điều kiện thổ nhưỡng và khí hậu lý tưởng. Người trồng cà phê không chỉ là những người nông dân, mà họ còn là những người gìn giữ bí mật của cây cà phê, từ cách chăm sóc đến cách thu hoạch, họ là người truyền đạt tâm hồn của sản phẩm.</p></p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <h1 class="heading">THỰC ĐƠN</h1>
+        <div class="box-menu">
+            <div class="box">
+                <img src="/assets_Home/images/1.jpg" alt="" width="188px">
+                <h3>Flat White</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/2.jpeg" alt="" width="188px">
+                <h3>Latte</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/3.jpg" alt="" width="188px">
+                <h3>Cappuccino</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/4.jpg" alt="" width="188px">
+                <h3>Espresso</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/5.jpg" alt="" width="188px">
+                <h3>White Chocolate Mocha</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/6.jpg" alt="" width="188px">
+                <h3>Caramel Latte</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/7.jpg" alt="" width="188px">
+                <h3>Single Espresso Ristretto</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/8.jpeg" alt="" width="188px">
+                <h3>Brewed Coffee</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/9.png" alt="" width="188px">
+                <h3>Mocha</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/10.jpg" alt="" width="188px">
+                <h3>Espresso Macchiato</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/11.jpg" alt="" width="188px">
+                <h3>Americano</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+            <div class="box">
+                <img src="/assets_Home/images/12.jpg" alt="" width="188px">
+                <h3>Café au Lait</h3>
+                <h4>
+                    Giá : 
+                    <strong>55,000 VNĐ</strong>
+                </h4>
+            </div>
+        </div>
+    </section>
+    
+<footer>
+    <div class="footer">
+        <div class="row">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+
+        <div class="row">
+            <ul>
+                <li><a href="#home">TRANG CHỦ</a></li>
+                <li><a href="#about">VỀ CHÚNG TÔI</a></li>
+                <li><a href="#menu">THỰC ĐƠN</a></li>
+                <li><a href="https://forms.gle/UB9oWQi4AMi5tdiK8">PHẢN
+                        HỒI</a></li>
+                <li><a href="#book">ĐẶT BÀN</a></li>
+            </ul>
+
+        </div>
+
+        <div class="logo-footer">
+            <img src="/assets_Home/images/logo.png" alt width="70px">
+        </div>
+    </div>
+</footer>
+
+<script>
+    var modal = document.getElementById("myModal");
+          var btn = document.querySelector(".btn"); // Nút Đăng nhập trên thanh header
+          var span = document.getElementsByClassName("close")[0];
+          
+          // Khi người dùng nhấp vào nút Đăng nhập, hiển thị modal
+          btn.onclick = function() {
+            modal.style.display = "block";
+          }
+          
+          // Khi người dùng nhấp vào nút đóng (x), ẩn modal
+          span.onclick = function() {
+            modal.style.display = "none";
+          }
+          
+          // Khi người dùng nhấp ra ngoài modal, ẩn modal
+          window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          }
+</script>
+<!-- Script để hiển thị modal khi có lỗi -->
+    <script>
+        $(document).ready(function() {
+            // Kiểm tra xem modal có phải là modal lỗi không, nếu có hiển thị nó
+            {{#if error}}
+                Swal.fire({
+                icon: "error",
+                title: "Lỗi đăng nhập",
+                text: "Sai tài khoản hoặc mật khẩu"
+                });
+            {{/if}}
+        });
+    </script> 
+<script src="/assets_Home/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

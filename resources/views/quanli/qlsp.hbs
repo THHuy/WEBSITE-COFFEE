@@ -1,0 +1,133 @@
+<header>
+    <title>QUẢN LÝ THỰC ĐƠN</title>
+    <link rel="stylesheet" href="/assets_QL/css/styleqlsp.css">
+</header>
+<body>
+    <div id="header">
+        <!-- ul#nav>li*5>a -->
+        <ul id="nav">
+            <li><a href>TRANG CHỦ</a></li>
+            <li><a href>HỒ SƠ</a></li>
+            <li><a href>BẢO MẬT</a></li>
+            <li><a href>LIÊN HỆ</a></li>
+            <li>
+                <a href>
+                    QUẢN LÝ
+                    <!-- mũi tên kế  -->
+                    <i class="nav-arrow-down ti-angle-down"></i>
+                </a>
+                <ul class="subnav">
+                    <li><a href="/quanli/donhang">Quản lý đơn hàng</a></li>
+
+                    <li><a href="/quanli/sanpham">Quản lý sản phẩm</a></li>
+                    <li><a href="/quanli/nhanvien">Quản lý nhân viên</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- sign-out button -->
+        <div class="signout-btn">
+            <i class="signout-icon ti-shift-right">Xin chào {{user}}</i>
+        </div>
+    </div>
+
+    <div class="header-text">
+        <p>QUẢN LÝ THỰC ĐƠN</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Mã món</th>
+                <th>Tên món</th>
+                <th>Giá</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td>{{this.masp}}</td>
+                <td>{{this.ten}}</td>
+                <td>{{this.price}},000 đ</td>
+                <td>
+                    <button class="edit-button"
+                        onclick="editMon('{{this.masp}}')">Sửa</button>
+                    <button class="delete-button"
+                        data-maMon="{{this.masp}}">Xoá</button>
+
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <!-- modal thêm món -->
+    <div class="actions">
+        <button class="add-button" onclick="openAddModal()">+</button>
+    </div>
+
+    <!-- modal thêm món -->
+    <div id="addModal" class="modal add-modal">
+        <div class="modal-content add-modal-content">
+            <span class="close" onclick="closeAddModal()">&times;</span>
+            <h2>Thêm Món</h2>
+            <form id="addForm" action="/quanli/addMenu" method="POST">
+
+                <label for="tenMon">Tên món:</label>
+                <input type="text" id="tenMon" name="tenMon" required>
+
+                <label for="giaMon">Giá:</label>
+                <input type="text" id="giaMon" name="giaMon" required>
+
+                <button type="submit">Thêm Món</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- modal sửa món -->
+    <div id="editModal" class="modal edit-modal">
+        <div class="modal-content edit-modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Sửa Món</h2>
+            <form id="editForm" name="editSP" method="POST">
+
+                <label for="editMaMon">Mã món:</label>
+                <input type="text" id="editMaMon" name="editMaMon" readonly>
+
+                <label for="editTenMon">Tên món:</label>
+                <input type="text" id="editTenMon" name="editTenMon" required>
+
+                <label for="editGiaMon">Giá:</label>
+                <input type="text" id="editGiaMon" name="editGiaMon" required>
+
+                <button type="button" class="btnUpdate">Cập Nhật</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- modal xoá món -->
+    <div id="deleteModal" class="delete-modal">
+        <div class="delete-modal-content">
+            <span class="close" onclick="closeLogoutModal()">&times;</span>
+            <h2>Xoá món</h2>
+            <p>Bạn có chắc chắn muốn xoá món không?</p>
+            <button type="submit">Đồng ý</button>
+            <button onclick="closeDelete()">Hủy bỏ</button>
+        </div>
+    </div>
+
+    <!-- logout modal -->
+    <div id="logoutModal" class="logout-modal">
+        <div class="logout-modal-content">
+            <span class="close" onclick="closeLogoutModal()">&times;</span>
+            <h2>Đăng Xuất</h2>
+            <p>Bạn có chắc chắn muốn đăng xuất không?</p>
+            <button onclick="logout()">Đăng Xuất</button>
+            <button onclick="closeLogoutModal()">Hủy bỏ</button>
+        </div>
+    </div>
+    <form method="POST" name="delete_form"></form>
+    <script src="/assets_QL/js/qlsp.js"></script>
+            <script src="/assets_NV/main.js"></script>
+</body>

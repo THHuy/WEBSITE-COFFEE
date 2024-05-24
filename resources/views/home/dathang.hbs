@@ -1,0 +1,523 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Hàng</title>
+    <link rel="stylesheet" href="/assets_Home/css/dathang1.css">
+    <link rel="stylesheet" href="/assets_Home/css/login.css">
+</head>
+<header class="header ">
+    <nav id="navbar-nav" class="navbar navbar-expand-lg navbar-dark ">
+        <a href="#" class="logo" id="outside"><img
+                src="/assets_Home/images/logo.png" alt width="120px"> <i
+                class="fas fa-mug-hot"></i></a>
+        <button id="navbar-dropdown" class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <a href="#" class="logo"><img src="/assets_Home/images/logo.png" alt
+                    width="120px"> <i class="fas fa-mug-hot"></i></a>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="/">TRANG CHỦ <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about">VỀ CHÚNG TÔI</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#menu">THỰC ĐƠN</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://forms.gle/UB9oWQi4AMi5tdiK8">PHẢN HỒI</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dat-hang">ĐẶT HÀNG TRỰC TUYẾN</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dat-ban">ĐẶT BÀN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <a href="#" class="btn" onclick="openModal()">ĐĂNG NHẬP</a>
+    <link rel="icon" type="image/x-icon" href="/assets_Home/images/1.jpg">
+    <title>M-Coffee</title>
+    <link rel="stylesheet" href="/assets_Home/css/style.css">
+    <link rel="stylesheet" href="/assets_Home/css/style.css">
+</header>
+<body>
+    <div class="huongdan">
+        <h4>Hướng dẫn:</h4>
+        <ol>
+            <li>Điền thông tin cá nhân vào form bên dưới</li>
+            <li>Chọn sản phẩm bằng cách click vào dấu + tương ứng</li>
+            <li>Check lại thông tin sản phẩm ở phần đơn đặt</li>
+            <li>Nhấn "ĐẶT HÀNG"</li>
+            <li>Đợi nhân viên gọi xác nhận</li>
+        </ol>
+    </div>
+    <h1>ĐẶT HÀNG TRỰC TUYẾN</h1>
+    <form action="/addCart" method="POST" id="payment-form"
+        name="reserve-student-form">
+        <div class="form_thongtinkhachhang">
+            <div class="form-row">
+                <div class="input-data">
+                    <label for="fname">Tên khách hàng</label>
+                    <input type="text" id="fname" name="tenkh"
+                        placeholder="Tên khách hàng...">
+                    <div class="underline"></div>
+                </div>
+                <div class="input-data">
+                    <label for="lname">Số điện thoại</label>
+                    <input type="text" id="lname" name="sdt"
+                        placeholder="Số điện thoại...">
+
+                </div>
+                <div class="input-data">
+                    <label for="lname">Ngày giao hàng</label>
+                    <input type="date" id="lname" name="dateship"
+                        placeholder="Ngày giao hàng...">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <label for="fname">Địa chỉ</label>
+                    <input type="text" id="fname" name="address"
+                        placeholder="Địa chỉ giao hàng...">
+
+                </div>
+                <div class="input-data" id="time">
+                    <label for="lname">Thời gian</label>
+                    <input type="time" id="lname" name="timeship"
+                        placeholder="Thời gian nhận hàng">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <label for="lname">Ghi chú</label>
+                    <input type="text" id="lname" name="note"
+                        placeholder="Ghi chú....">
+                </div>
+            </div>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>ĐĂNG NHẬP</h2>
+                <form id="loginForm" method="post" id="myModal" action="/login">
+                    <label for="username">Tài khoản:</label>
+                    <input type="text" name="username" placeholder="Username">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" name="pwd" placeholder="Password">
+                    <button type="submit">ĐĂNG NHẬP</button>
+                </form>
+            </div>
+        </div>
+        <div class="menu-container">
+            <div id="menu">
+                <div class="scroll-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mã sp</th>
+                                <th>Tên</th>
+                                <th>Giá (VNĐ)</th>
+                                <th>Ảnh</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each data}}
+                            <tr>
+                                <td>{{this.masp}}</td>
+                                <td>{{this.ten}}</td>
+                                <td>{{this.price}},000</td>
+                                <td><img class="image_sp"
+                                        src="/assets_Home/images/{{sum @index 1}}.jpg"
+                                        alt></td>
+                                <td><button type="button" class="add-to-cart"
+                                        onclick="addToCart('{{this.masp}}')">+</button></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="invoice">
+                <div class="scroll-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mã sản phẩm</th>
+                                <th>Tên</th>
+                                <th>Giá (VNĐ)</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <!-- Dữ liệu hoá đơn sẽ được thêm vào đây -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="total-payment">
+                    <div>THÀNH TIỀN :</div>
+                    <div id="totalAmount">0 VNĐ</div>
+                </div>
+                <button type="button" class="payment-button">ĐẶT HÀNG
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="#home">TRANG CHỦ</a></li>
+                    <li><a href="#about">VỀ CHÚNG TÔI</a></li>
+                    <li><a href="#menu">THỰC ĐƠN</a></li>
+                    <li><a href="https://forms.gle/UB9oWQi4AMi5tdiK8">PHẢN
+                            HỒI</a></li>
+                    <li><a href="#book">ĐẶT BÀN</a></li>
+                </ul>
+
+            </div>
+
+            <div class="logo-footer">
+                <img src="/assets_Home/images/logo.png" alt width="70px">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var btnPayment = document.querySelector(".payment-button")
+        btnPayment.addEventListener("click", () => {
+            const formPayment = document.getElementById("payment-form")
+        Swal.fire({
+        title: "Đặt Hàng",
+        text: "Bạn đặt có xác nhận Đặt Hàng",
+        icon: "question",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Xác nhận",
+        showCancelButton: true,
+        cancelButtonColor: "#d33",
+        }).then((result) => {
+        if (result.isConfirmed) {
+               formPayment.submit()
+        }
+        });
+        });
+    </script>
+    <script>
+    function addToCart(productCode) {
+    // Tìm thông tin sản phẩm từ mã sản phẩm
+    var menuRows = document.querySelectorAll('#menu tbody tr');
+    var selectedProduct;
+
+    menuRows.forEach(function (row) {
+        var code = row.querySelector('td:nth-child(1)').textContent;
+        if (code === productCode) {
+            selectedProduct = {
+                code: code,
+                name: row.querySelector('td:nth-child(2)').textContent,
+                price: row.querySelector('td:nth-child(3)').textContent
+            };
+        }
+    });
+
+    // Kiểm tra xem sản phẩm đã tồn tại trong hoá đơn chưa
+    var invoiceRows = document.querySelectorAll('#invoice tbody tr');
+    var productExists = false;
+
+    invoiceRows.forEach(function (row) {
+        var code = row.querySelector('td:nth-child(1)').textContent;
+        if (code === selectedProduct.code) {
+            productExists = true;
+
+            // Tăng số lượng nếu sản phẩm đã tồn tại
+            var quantityElement = row.querySelector('.quantity');
+            var currentQuantity = parseInt(quantityElement.textContent.substring(1), 10);
+
+            if (!isNaN(currentQuantity)) {
+                // Kiểm tra xem currentQuantity có phải là một số hay không
+                quantityElement.textContent = ' x' + (currentQuantity + 1);
+
+                // Cập nhật tổng tiền ngay sau khi thêm mới
+                updateTotalAmount();
+            } else {
+                // Nếu currentQuantity không phải là một số, gán giá trị là 1
+                quantityElement.textContent = ' x1';
+            }
+        }
+    });
+
+    // Nếu sản phẩm chưa tồn tại, thêm vào hoá đơn
+    if (!productExists) {
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = '<td>' + selectedProduct.code + '</td>' +
+            '<td>' + selectedProduct.name + '<span class="quantity">x1</span></td>' +
+            '<td>' + selectedProduct.price + '</td>' +
+            '<td><button class="remove-from-cart" onclick="removeFromCart(\'' + selectedProduct.code + '\')">-</button></td>';
+
+        document.querySelector('#invoice tbody').appendChild(newRow);
+
+        // Cập nhật tổng tiền ngay sau khi thêm mới
+        updateTotalAmount();
+    }
+}
+
+function removeFromCart(productCode) {
+    // Xóa sản phẩm khỏi hoá đơn hoặc giảm số lượng nếu lớn hơn 1
+    var invoiceRows = document.querySelectorAll('#invoice tbody tr');
+    var rowToRemove;
+
+    invoiceRows.forEach(function(row) {
+        var code = row.querySelector('td:nth-child(1)').textContent;
+        if (code === productCode) {
+            var quantityElement = row.querySelector('.quantity');
+            var currentQuantity = parseInt(quantityElement.textContent.substring(1), 10);
+
+            if (!isNaN(currentQuantity) && currentQuantity > 1) {
+                // Giảm số lượng nếu lớn hơn 1
+                quantityElement.textContent = 'x' + (currentQuantity - 1);
+
+                // Cập nhật giá và tổng tiền ngay sau khi giảm số lượng
+                updatePriceAndTotalAmount(row, productCode, currentQuantity - 1);
+            } else {
+                // Xóa dòng nếu số lượng là 1 hoặc không phải là số
+                rowToRemove = row;
+            }
+        }
+    });
+
+    if (rowToRemove) {
+        rowToRemove.remove();
+        // Cập nhật tổng tiền
+        updateTotalAmount();
+    }
+}
+
+function updatePriceAndTotalAmount(row, productCode, quantity) {
+    // Tìm thông tin sản phẩm từ mã sản phẩm
+    var menuRows = document.querySelectorAll('#menu tbody tr');
+    var selectedProduct;
+
+    menuRows.forEach(function (menuRow) {
+        var code = menuRow.querySelector('td:nth-child(1)').textContent;
+        if (code === productCode) {
+            selectedProduct = {
+                code: code,
+                name: menuRow.querySelector('td:nth-child(2)').textContent,
+                price: parseInt(menuRow.querySelector('td:nth-child(3)').textContent.replace(/[^0-9]/g, ''), 10)
+            };
+        }
+    });
+
+    // Cập nhật giá của dòng trong hoá đơn khi giảm số lượng
+    var priceElement = row.querySelector('td:nth-child(3)');
+    var unitPrice = selectedProduct.price;
+    var totalPrice = unitPrice * quantity;
+    
+    // Sử dụng hàm formatCurrency để định dạng số tiền thành đơn vị tiền tệ Việt Nam
+    priceElement.textContent = formatCurrency(totalPrice);
+
+    // Cập nhật tổng tiền ngay sau khi giảm số lượng
+    updateTotalAmount();
+}
+
+function formatCurrency(amount) {
+    return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+}
+function updatePriceAndTotalAmount(row, productCode, quantity) {
+    // Tìm thông tin sản phẩm từ mã sản phẩm
+    var menuRows = document.querySelectorAll('#menu tbody tr');
+    var selectedProduct;
+
+    menuRows.forEach(function (menuRow) {
+        var code = menuRow.querySelector('td:nth-child(1)').textContent;
+        if (code === productCode) {
+            selectedProduct = {
+                code: code,
+                name: menuRow.querySelector('td:nth-child(2)').textContent,
+                price: parseInt(menuRow.querySelector('td:nth-child(3)').textContent.replace(/[^0-9]/g, ''), 10)
+            };
+        }
+    });
+
+    // Cập nhật giá của dòng trong hoá đơn khi giảm số lượng
+    var priceElement = row.querySelector('td:nth-child(3)');
+    var unitPrice = selectedProduct.price;
+    var totalPrice = unitPrice * quantity;
+    priceElement.textContent = formatCurrency(totalPrice);
+
+    // Cập nhật tổng tiền ngay sau khi giảm số lượng
+    updateTotalAmount();
+}
+
+// cập nhật tổng tiền
+function updateTotalAmount() {
+    var invoiceRows = document.querySelectorAll('#invoice tbody tr');
+    var totalAmount = 0;
+
+    invoiceRows.forEach(function(row) {
+        var priceText = row.querySelector('td:nth-child(3)').textContent;
+        var price = parseFloat(priceText.replace(/[^0-9]/g, '')); // Loại bỏ tất cả ký tự không phải số
+
+        var quantityText = row.querySelector('.quantity').textContent.substring(1);
+        var quantity = parseInt(quantityText, 10);
+
+        if (!isNaN(price) && !isNaN(quantity)) {
+            totalAmount += price;
+        }
+    });
+    document.getElementById('totalAmount').innerHTML = formatCurrency(totalAmount) + `<input type = "hidden" name = "total" value ="${totalAmount}" >` ;
+}
+
+function formatCurrency(amount) {
+    return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+}
+
+//thêm món vào hoá đơn
+function addToCart(productCode) {
+    var menuRows = document.querySelectorAll('#menu tbody tr');
+    var selectedProduct;
+
+    menuRows.forEach(function (row) {
+        var code = row.querySelector('td:nth-child(1)').textContent;
+        if (code === productCode) {
+            selectedProduct = {
+                code: code,
+                name: row.querySelector('td:nth-child(2)').textContent,
+                price: parseInt(row.querySelector('td:nth-child(3)').textContent.replace(/[^0-9]/g, ''), 10)
+            };
+        }
+    });
+
+    var invoiceRows = document.querySelectorAll('#invoice tbody tr');
+    var productExists = false;
+
+ //tăng số lượng x2,x3,x4 khi bấm dấu +
+    invoiceRows.forEach(function (row) {
+        var code = row.querySelector('td:nth-child(1)').textContent;
+        if (code === selectedProduct.code) {
+            productExists = true;
+            var quantityElement = row.querySelector('.quantity');
+            var currentQuantity = parseInt(quantityElement.textContent.substring(1), 10);
+
+            if (!isNaN(currentQuantity)) {
+                quantityElement.innerHTML = `<input name="sl" type = "hidden" value="${(currentQuantity + 1)}">` + 'x' + (currentQuantity + 1);
+            } else {
+                quantityElement.innerHTML =  'x1';
+            }
+            //cập nhật lại tổng tiền và giá bên hoá đơn
+            updatePriceAndTotalAmount(row, selectedProduct.code, currentQuantity + 1);
+        }
+    });
+
+
+    //nếu sản phẩm đã tồn tại thì update lại tổng tiền
+    if (!productExists) {
+        var newRow = document.createElement('tr');
+        newRow.innerHTML = `<td><input type="hidden" name="masp" value="${selectedProduct.code}">` + selectedProduct.code + '</td>' +
+            `<td><input type="hidden" name="tensp" value="${selectedProduct.name}">` + selectedProduct.name + `<span class="quantity"><input name="sl" type = "hidden" value="1">x1</span></td>` +
+            `<td>` + formatCurrency(selectedProduct.price) + '</td>' +
+            '<td><button type="button" class="remove-from-cart" onclick="removeFromCart(\'' + selectedProduct.code + '\')">-</button></td>';
+
+        document.querySelector('#invoice tbody').appendChild(newRow);
+        updateTotalAmount();
+    }
+}
+
+//hàm để update giá bên hoá đơn khi tăng số lượng x2,x3,... và tổng tiền
+function updatePriceAndTotalAmount(row, productCode, quantity) {
+    var menuRows = document.querySelectorAll('#menu tbody tr');
+    var selectedProduct;
+
+    menuRows.forEach(function (menuRow) {
+        var code = menuRow.querySelector('td:nth-child(1)').textContent;
+        if (code === productCode) {
+            selectedProduct = {
+                code: code,
+                name: menuRow.querySelector('td:nth-child(2)').textContent,
+                price: parseInt(menuRow.querySelector('td:nth-child(3)').textContent.replace(/[^0-9]/g, ''), 10)
+            };
+        }
+    });
+
+    var priceElement = row.querySelector('td:nth-child(3)');
+    var unitPrice = selectedProduct.price;
+    var totalPrice = unitPrice * quantity;
+    priceElement.innerHTML =  formatCurrency(totalPrice);
+    updateTotalAmount();
+}
+//sau khi remove sản phẩm khỏi hoá đơn,cập nhật lại tổng tiền
+function removeFromCart(productCode) {
+    var invoiceRows = document.querySelectorAll('#invoice tbody tr');
+    var rowToRemove;
+
+    invoiceRows.forEach(function (row) {
+        var code = row.querySelector('td:nth-child(1)').textContent;
+        if (code === productCode) {
+            var quantityElement = row.querySelector('.quantity');
+            var currentQuantity = parseInt(quantityElement.textContent.substring(1), 10);
+
+            if (!isNaN(currentQuantity) && currentQuantity > 1) {
+                quantityElement.innerHTML = `<input name="sl" type = "hidden" value="${(currentQuantity - 1)}">` + 'x' + (currentQuantity - 1);
+                updatePriceAndTotalAmount(row, productCode, currentQuantity - 1);
+            } else {
+                rowToRemove = row;
+            }
+        }
+    });
+
+    if (rowToRemove) {
+        rowToRemove.remove();
+        updateTotalAmount();
+    }
+}
+
+  
+
+    function resetInvoice() {
+    // Xóa tất cả các dòng trong hoá đơn
+    var invoiceTableBody = document.querySelector('#invoice tbody');
+    invoiceTableBody.innerHTML = '';
+
+    // Cập nhật tổng tiền
+    updateTotalAmount();
+}
+
+
+</script>
+<script>
+    var modal = document.getElementById("myModal");
+          var btn = document.querySelector(".btn"); // Nút Đăng nhập trên thanh header
+          var span = document.getElementsByClassName("close")[0];
+          
+          // Khi người dùng nhấp vào nút Đăng nhập, hiển thị modal
+          btn.onclick = function() {
+            modal.style.display = "block";
+          }
+          
+          // Khi người dùng nhấp vào nút đóng (x), ẩn modal
+          span.onclick = function() {
+            modal.style.display = "none";
+          }
+          
+          // Khi người dùng nhấp ra ngoài modal, ẩn modal
+          window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          }
+</script>

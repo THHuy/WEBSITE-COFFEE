@@ -1,0 +1,149 @@
+<header>
+    <title>Quản Lý Nhân Viên</title>
+    <link rel="stylesheet" href="/assets_QL/css/styleqlnv.css">
+</header>
+<body>
+    <div id="header">
+        <ul id="nav">
+            <li><a href>TRANG CHỦ</a></li>
+            <li><a href>HỒ SƠ</a></li>
+            <li><a href>BẢO MẬT</a></li>
+            <li><a href>LIÊN HỆ</a></li>
+            <li>
+                <a href>
+                    QUẢN LÝ
+                    <!-- mũi tên kế  -->
+                    <i class="nav-arrow-down ti-angle-down"></i>
+                </a>
+                <ul class="subnav">
+                    <li><a href="/quanli/donhang">Quản lý đơn hàng</a></li>
+
+                    <li><a href="/quanli/sanpham">Quản lý sản phẩm</a></li>
+                    <li><a href>Quản lý nhân viên</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    <!-- sign-out button -->
+    <div class="signout-btn">
+        <i class="signout-icon ti-shift-right">Xin chào {{user}}</i>
+    </div>
+    </div>
+
+    <div class="header-text">
+        <p>QUẢN LÝ NHÂN VIÊN</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Mã nhân viên</th>
+                <th>Tên nhân viên</th>
+                <th>Giới tính</th>
+                <th>Số điện thoại</th>
+                <th>Chức vụ</th>
+                <th>Lương</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+                <td class="manv{{this.manv}}">{{this.manv}}</td>
+                <td>{{this.tennv}}</td>
+                <td>{{this.sex}}</td>
+                <td>{{this.sdt}}</td>
+                <td>{{this.position}}</td>
+                <td>{{this.luong}} VNĐ</td>
+                <td>
+                    <button class="edit-button">Sửa</button>
+                    <button class="delete-button" type="button" data-manv="{{this.manv}}">Xoá</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <!-- modal thêm nv -->
+    <div class="actions">
+        <button class="add-button" onclick="openModal()">+</button>
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Thêm nhân viên</h2>
+            <form id="addEmployeeForm" name="addNV" method="POST">
+                <label for="employeeName">Tên nhân viên:</label>
+                <input type="text" id="employeeName" name="employeeName"
+                    required>
+                <label for="employeeSex">Chọn giới tính</label>
+                <select name="sex" id="employeeSex">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+                <label for="phoneNumber">Số điện thoại:</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" required>
+
+                <label for="position">Chức vụ:</label>
+                <select id="position" name="position" required>
+                    <option value="Quản lý">Quản lý</option>
+                    <option value="Thu ngân">Thu ngân</option>
+                    <option value="Phục vụ">Phục vụ</option>
+                    <option value="Pha chế">Pha chế</option>
+                    <option value="Bảo vệ">Bảo vệ</option>
+                </select>
+                <label for="salary">Lương:</label>
+                <input type="text" id="salary" name="salary" required>
+                <button type="button" class="btn-add">Thêm nhân viên</button>
+            </form>
+        </div>
+    </div>
+    <!-- edit modal -->
+    <div id="editModal" class="edit-modal">
+        <div class="edit-modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Sửa thông tin nhân viên</h2>
+            <form method="POST" id="editEmployeeForm" name="editEmployeeForm">
+                <label for="editEmployeeId">Mã nhân viên:</label>
+                <input type="text" id="editEmployeeId" name="editEmployeeId"
+                    required readonly>
+                <label for="editEmployeeName">Tên nhân viên:</label>
+                <input type="text" id="editEmployeeName" name="editEmployeeName"
+                    required>
+                <label for="employeeSex">Chọn giới tính</label>
+                <select name="sex" id="employeeSex">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+                <label for="editPhoneNumber">Số điện thoại:</label>
+                <input type="text" id="editPhoneNumber" name="editPhoneNumber"
+                    required>
+
+                <label for="editPosition">Chức vụ:</label>
+                <select id="editPosition" name="editPosition">
+                    <option value="Quản lý">Quản lý</option>
+                    <option value="Thu ngân">Thu ngân</option>
+                    <option value="Phục vụ">Phục vụ</option>
+                    <option value="Pha chế">Pha chế</option>
+                    <option value="Bảo vệ">Bảo vệ</option>
+                </select>
+                <label for="editSalary">Lương:</label>
+                <input type="text" id="editSalary" name="editSalary" required>
+                <button type="button" id="updateNv">Cập nhật</button>
+            </form>
+        </div>
+    </div>
+    <form method="POST" name="delete-form" id="delete-form"></form>
+    <!-- logout modal -->
+    <div id="logoutModal" class="logout-modal">
+        <div class="logout-modal-content">
+            <span class="close" onclick="closeLogoutModal()">&times;</span>
+            <h2>Đăng Xuất</h2>
+            <p>Bạn có chắc chắn muốn đăng xuất không?</p>
+            <button onclick="logout()">Đăng Xuất</button>
+            <button onclick="closeLogoutModal()">Hủy bỏ</button>
+        </div>
+    </div>
+    
+    <script src="/assets_QL/js/qlnv.js"></script>
+            <script src="/assets_NV/main.js"></script>

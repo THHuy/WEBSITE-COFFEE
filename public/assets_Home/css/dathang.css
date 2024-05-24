@@ -1,0 +1,451 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all .2s linear;
+    scrollbar-width: none;
+}
+html{
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+
+#header {
+    height: 62px;
+    background: linear-gradient(90deg, rgba(140,85,13,1) 20%, rgba(244,140,2,1) 62%, rgba(209,145,61,1) 74%, rgba(221,168,98,1) 100%, rgba(254,229,199,1) 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* thanh header không bị ảnh làm chìm mất */
+    z-index: 1;
+    box-shadow: 0 .5rem 1rem rgba(140,85,13,1);
+    
+    
+}
+#nav, .subnav{
+    padding: 0;
+    list-style-type: none; /*bỏ dấu chấm của list */
+   
+}
+#nav{
+    display:inline-block;
+   
+}
+
+/* làm cho list ngang hàng */
+
+/* set subnav nằm dưới thẻ li(mở rộng của thẻ more)
+cho position của li relative và của subnav absolute */
+#nav > li{
+    display: inline-block;
+}
+#nav li{
+    
+    position: relative;
+    
+}
+
+
+#nav > li > a {
+    color: #fff;
+    text-transform: uppercase; /* viết hoa thẻ a cấp 1,ko ảnh hưởng cấp 2 */
+}
+#nav li a{
+   
+    text-decoration: none;
+    line-height: 62px; /*phần tử trong list có height bằng với height của header */
+    padding:0 24px; /*cho các phần tử cách nhau ra left-right:24px */
+    display:block;
+   
+
+}
+#nav li:hover .subnav {
+    display: block;
+}
+/* di chuột vào đổi màu */
+
+#nav > li:hover > a,
+#nav .subnav li:hover a{
+    color: #000;
+    background-color: #ccc;
+
+}
+
+
+#nav .subnav {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    /* tạo bóng đổ */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    min-width: 160px;
+    
+}
+
+#nav .subnav a {
+    color: #000;
+    padding:0 12px;
+    line-height: 38px;
+}
+
+#nav .nav-arrow-down {
+    font-size: 12px;
+}
+#header .signout-btn {
+    float: right;
+    padding : 0 21px;
+    cursor: pointer;
+}
+
+#header .signout-btn:hover {
+    background-color: #f44336;
+}
+#header .signout-icon {
+    color: #fff;
+    font-size: 20px;
+    line-height: 62px;
+}
+
+/* text quản lý */
+.header-text {
+    margin-top: 90px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(90deg, rgba(140,85,13,1) 20%, rgba(244,140,2,1) 62%, rgba(209,145,61,1) 74%, rgba(221,168,98,1) 100%, rgba(254,229,199,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+   
+}
+.header-text p {
+    font-size:40px;
+    color: #333;
+    margin: 10px 0;
+    
+    
+}
+
+.menu-container {
+    display: flex;
+    height: 100%;
+    margin-top: 20px;
+    
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+    
+    
+}
+
+
+.btn-XemYC_DatBan {
+    padding: 10px 20px;
+    background: linear-gradient(90deg, rgba(140,85,13,1) 20%, rgba(244,140,2,1) 62%, rgba(209,145,61,1) 74%, rgba(221,168,98,1) 100%, rgba(254,229,199,1) 100%);;
+   margin-left: 30px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+   
+}
+.btn-XemYC_DatBan:hover{
+    background: #b97b16;
+    color: #050801;
+    box-shadow: 0 0 5px #a05b06,
+                0 0 25px #c17408,
+                0 0 50px #e1b721,
+                0 0 200px #ffff27;
+     -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+     transform-style: preserve-3d;
+     
+}
+
+.btn-XemDon_DatHang {
+    padding: 10px 20px;
+    background: linear-gradient(90deg, rgba(140,85,13,1) 20%, rgba(244,140,2,1) 62%, rgba(209,145,61,1) 74%, rgba(221,168,98,1) 100%, rgba(254,229,199,1) 100%);;
+   margin-right: 30px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+.btn-XemDon_DatHang:hover{
+    background: #b97b16;
+      color: #050801;
+      box-shadow: 0 0 5px #a05b06,
+                  0 0 25px #c17408,
+                  0 0 50px #e1b721,
+                  0 0 200px #ffff27;
+       -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+}
+
+#menu {
+    
+    width: 50%;
+    overflow-y: auto;
+    background-color: white;
+    padding: 20px;
+}
+
+#invoice {
+    width: 50%;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    
+}
+
+th {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    align-items: center;
+    
+}
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+   
+}
+
+.scroll-container {
+    max-height: calc(100vh - 40px); /* 40px for header */
+    overflow-y: auto;
+    overflow-x: hidden; /* Tắt thanh cuộn ngang */
+    border-radius: 10px;
+    
+}
+
+.total-payment {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.payment-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.payment-button:hover{
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
+}
+.add-to-table-button {
+     background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.add-to-table-button:hover{
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.add-to-cart, .remove-from-cart {
+    background-color: #008CBA;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* CSS cho modal */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 40%; /* Điều chỉnh kích thước modal ở đây */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: modalFadeIn ease 0.6s;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center; /* Căn giữa ngang */
+}
+
+.modal-body {
+    text-align: center; /* Căn giữa ngang */
+}
+.modal-body .col a{
+    color: #000;
+    text-decoration: none;
+}
+.modal-footer {
+    padding: 10px;
+    text-align: center; /* Căn giữa ngang */
+}
+
+.btn-container {
+    margin-top: 10px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px; /* Khoảng cách giữa các nút */
+}
+
+.btn:last-child {
+    margin-right: 0; /* Không cần khoảng cách cho nút cuối cùng */
+}
+
+.btn:hover {
+    background-color: red;
+}
+/*  */
+@keyframes modalFadeIn {
+    from{
+        opacity: 0;
+        transform: translateY(-140px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/*  modal XemYC_DatBan */
+#modalXemYC_DatBan {
+    display: none;
+}
+
+#modalXemYC_DatBan table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#modalXemYC_DatBan th, #modalXemYC_DatBan td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#modalXemYC_DatBan th {
+    background-color: #333;
+    color: white;
+}
+
+#modalXemYC_DatBan .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 80%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: modalFadeIn ease 0.6s;
+}
+
+/* Modal XemDon_DatHang */
+#modalXemDon_DatHang {
+    display: none;
+}
+
+#modalXemDon_DatHang table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#modalXemDon_DatHang th, #modalXemDon_DatHang td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#modalXemDon_DatHang th {
+    background-color: #333;
+    color: white;
+}
+
+#modalXemDon_DatHang .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: modalFadeIn ease 0.6s;
+    
+}
+
+#reserve-student-modal .modal-content{
+    width: 100%;
+}
+
+
+.p-3.border.selected{
+    background-color: #00ff00;
+}

@@ -1,0 +1,178 @@
+<header>
+    <title>Đặt bàn</title>
+    <link rel="stylesheet" href="/assets_Home/css/datban.css">
+    <link rel="stylesheet" href="/assets_Home/css/login.css">
+</header>
+<body>
+<header class="header ">
+    <nav id="navbar-nav" class="navbar navbar-expand-lg navbar-dark ">
+        <a href="#" class="logo" id="outside"><img
+                src="/assets_Home/images/logo.png" alt width="120px"> <i
+                class="fas fa-mug-hot"></i></a>
+        <button id="navbar-dropdown" class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <a href="#" class="logo"><img src="/assets_Home/images/logo.png" alt
+                    width="120px"> <i class="fas fa-mug-hot"></i></a>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="/">TRANG CHỦ <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about">VỀ CHÚNG TÔI</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#menu">THỰC ĐƠN</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://forms.gle/UB9oWQi4AMi5tdiK8">PHẢN HỒI</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dat-hang">ĐẶT HÀNG TRỰC TUYẾN</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/dat-ban">ĐẶT BÀN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <a href="#" class="btn" onclick="openModal()">ĐĂNG NHẬP</a>
+    <link rel="icon" type="image/x-icon" href="/assets_Home/images/1.jpg">
+    <title>M-Coffee</title>
+    <link rel="stylesheet" href="/assets_Home/css/style.css">
+    <link rel="stylesheet" href="/assets_Home/css/style.css">
+</header>
+<div class="container">
+    <div class="text">
+        Đặt bàn M-COFFEE
+    </div>
+    <form action="/datban" method="POST" name="form-book">
+        <div class="form-row">
+            <div class="input-data">
+                <input type="text" name="tenkh">
+                <div class="underline"></div>
+                <label for>Tên khách hàng</label>
+            </div>
+            <div class="input-data">
+                <input type="text" name="sdt">
+                <div class="underline"></div>
+                <label for>Số điện thoại</label>
+            </div>
+            <div class="input-data">
+                <input type="text" name="sln">
+                <div class="underline"></div>
+                <label for>Số lượng người</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="input-data">
+                <input type="date" name="ngay">
+                <div class="underline"></div>
+                <label for>Ngày đặt bàn</label>
+            </div>
+            <div class="input-data">
+                <input type="time" name="thoigian">
+                <div class="underline"></div>
+                <label for>Thời gian</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="input-data textarea">
+                <input name="note" type="text" rows="8" cols="80"
+                    required></input>
+            <br />
+            <div class="underline"></div>
+            <label for>Ghi chú</label>
+            <div class="last-text">
+                <h5>QUÁN SẼ PHẢN HỒI THÔNG QUA SỐ ĐIỆN THOẠI CỦA QUÝ KHÁCH.
+                    CẢM ƠN QUÝ KHÁCH ĐÃ SỬ DỤNG DỊCH VỤ</h3>
+            </div>
+            <br />
+            <div class="form-row submit-btn">
+                <div class="input-data">
+                    <div class="inner"></div>
+                    <input class="button-submit" type="button" value="Đặt bàn"
+                        onclick="showInvoice()">
+                </div>
+            </form>
+        </div>
+</div>
+</div>
+</div>
+</div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>ĐĂNG NHẬP</h2>
+                <form id="loginForm" method="post" id="myModal" action="/login">
+                    <label for="username">Tài khoản:</label>
+                    <input type="text" name="username" placeholder="Username">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" name="pwd" placeholder="Password">
+                    <button type="submit">ĐĂNG NHẬP</button>
+                </form>
+            </div>
+        </div>
+</body>
+
+        <script>
+            function showInvoice() {
+    // Hiển thị hoá đơn hoặc thực hiện các bước thanh toán của bạn
+    // Ở đây, tôi sẽ chỉ hiển thị thông báo đơn giản
+    Swal.fire({
+    title: "Đặt bàn",
+    text: "Bạn đặt có xác nhận đặt bàn",
+    icon: "question",
+    {{!-- backdrop: 'static',
+    allowOutsideClick: false,
+    keyboard: false, --}}
+    confirmButtonColor: "#3085d6",
+    confirmButtonText: "Xác nhận",
+     showCancelButton: true,
+     cancelButtonColor: "#d33"
+    }).then((result) => {
+    if (result.isConfirmed) {
+    Swal.fire({
+      title: "Thành công",
+      text: "Bạn đã đặt thành công",
+      icon: "success"
+    });
+    setTimeout(()=>{
+    var reserveForm = document.forms['form-book'];
+    reserveForm.submit()
+    },1000)
+    
+    }
+    });
+    
+    // Reset hoá đơn sau khi thanh toán
+}
+        </script>
+        <script>
+            var modal = document.getElementById("myModal");
+          var btn = document.querySelector(".btn"); // Nút Đăng nhập trên thanh header
+          var span = document.getElementsByClassName("close")[0];
+          
+          // Khi người dùng nhấp vào nút Đăng nhập, hiển thị modal
+          btn.onclick = function() {
+            modal.style.display = "block";
+          }
+          
+          // Khi người dùng nhấp vào nút đóng (x), ẩn modal
+          span.onclick = function() {
+            modal.style.display = "none";
+          }
+          
+          // Khi người dùng nhấp ra ngoài modal, ẩn modal
+          window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          }
+        </script>
